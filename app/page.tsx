@@ -1,65 +1,174 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const FEATURED_POST = {
+  tag: "Review",
+  tagStyle: "bg-teal-50 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
+  title: "Elden Ring: Nightreign — a nova expansão que está dominando o reino",
+  description:
+    "Exploramos cada canto do novo mapa, enfrentamos os chefes mais brutais e voltamos para contar. Confira nossa análise completa sem spoilers.",
+  author: "Goblin Zex",
+  authorInitials: "GZ",
+  date: "12 jun 2026",
+  readTime: "8 min de leitura",
+  href: "/blog/elden-ring-nightreign-review",
+};
+
+const CATEGORIES = [
+  {
+    icon: "⚔️",
+    name: "RPG & Fantasia",
+    count: 34,
+    href: "/blog/category/rpg",
+  },
+  {
+    icon: "⭐",
+    name: "Reviews",
+    count: 28,
+    href: "/blog/category/reviews",
+  },
+  {
+    icon: "🗺️",
+    name: "Guias & Dicas",
+    count: 19,
+    href: "/blog/category/guides",
+  },
+  {
+    icon: "📜",
+    name: "Notícias",
+    count: 41,
+    href: "/blog/category/news",
+  },
+];
+
+const RECENT_POSTS = [
+  {
+    tag: "Guia",
+    tagStyle: "bg-amber-50 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
+    title: "Como dominar as runas de fogo em Baldur's Gate 3",
+    date: "10 jun 2026",
+    href: "/blog/baldurs-gate-runas-fogo",
+  },
+  {
+    tag: "Lista",
+    tagStyle: "bg-pink-50 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
+    title: "Os 10 chefes mais épicos dos últimos 5 anos",
+    date: "8 jun 2026",
+    href: "/blog/top-10-chefes-epicos",
+  },
+  {
+    tag: "Notícia",
+    tagStyle: "bg-blue-50 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    title: "Dragon Age: The Veilguard ganha nova atualização gratuita",
+    date: "7 jun 2026",
+    href: "/blog/dragon-age-veilguard-update",
+  },
+  {
+    tag: "RPG",
+    tagStyle: "bg-indigo-50 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
+    title: "Por que Disco Elysium ainda é único no gênero",
+    date: "5 jun 2026",
+    href: "/blog/disco-elysium-analise",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+      <section>
+        <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-900/60 p-8 sm:p-10">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 rounded-full px-3 py-1 mb-5">
+            🔥 destaque da semana
+          </span>
+
+          <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white leading-snug max-w-2xl mb-4">
+            {FEATURED_POST.title}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl mb-6">
+            {FEATURED_POST.description}
           </p>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <span
+              className={`text-xs font-medium px-2.5 py-1 rounded-full ${FEATURED_POST.tagStyle}`}
+            >
+              {FEATURED_POST.tag}
+            </span>
+
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-xl bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center text-indigo-700 dark:text-indigo-300 text-xs font-semibold">
+                {FEATURED_POST.authorInitials}
+              </div>
+              <span className="text-sm text-slate-500 dark:text-slate-400">
+                {FEATURED_POST.author} · {FEATURED_POST.date}
+              </span>
+            </div>
+
+            <span className="text-sm text-slate-400 dark:text-slate-500">
+              🕐 {FEATURED_POST.readTime}
+            </span>
+
+            <Link
+              href={FEATURED_POST.href}
+              className="ml-auto text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200 transition-colors"
+            >
+              Ler artigo →
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4">
+          Categorias
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {CATEGORIES.map((cat) => (
+            <Link
+              key={cat.name}
+              href={cat.href}
+              className="group flex flex-col gap-2 rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 hover:border-indigo-300 dark:hover:border-indigo-700 p-4 transition-colors duration-150"
+            >
+              <span className="text-2xl">{cat.icon}</span>
+              <p className="text-sm font-medium text-slate-900 dark:text-white">
+                {cat.name}
+              </p>
+              <p className="text-xs text-slate-400 dark:text-slate-500">
+                {cat.count} posts
+              </p>
+            </Link>
+          ))}
         </div>
-      </main>
+      </section>
+
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4">
+          Posts recentes
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {RECENT_POSTS.map((post) => (
+            <Link
+              key={post.href}
+              href={post.href}
+              className="group flex flex-col gap-3 rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 hover:border-indigo-300 dark:hover:border-indigo-700 p-4 transition-colors duration-150"
+            >
+              <span
+                className={`self-start text-xs font-medium px-2.5 py-1 rounded-full ${post.tagStyle}`}
+              >
+                {post.tag}
+              </span>
+              <p className="text-sm font-medium text-slate-900 dark:text-white leading-snug flex-1">
+                {post.title}
+              </p>
+              <p className="text-xs text-slate-400 dark:text-slate-500">
+                📅 {post.date}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }

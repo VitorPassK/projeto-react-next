@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { addFavorite, removeFavorite } from "@/store/slices/favoritesSlice";
 import { setActiveCategory } from "@/store/slices/searchSlice";
-import { useTheme } from "@/contexts/themeContext";
 
 const FEATURED_POST = {
   tag: "Review",
@@ -36,7 +35,6 @@ const RECENT_POSTS = [
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { theme, toggleTheme } = useTheme();
   const favorites = useSelector((state: RootState) => state.favorites.posts);
   const activeCategory = useSelector((state: RootState) => state.search.activeCategory);
 
@@ -56,15 +54,6 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-
-      <div className="flex justify-end">
-        <button
-          onClick={toggleTheme}
-          className="text-xs px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-indigo-400 transition-colors"
-        >
-          {theme === "dark" ? "☀️ Modo claro" : "🌙 Modo escuro"}
-        </button>
-      </div>
 
       <section>
         <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-900/60 p-8 sm:p-10">

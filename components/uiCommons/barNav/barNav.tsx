@@ -1,6 +1,11 @@
+"use client";
+
+import { useTheme } from "@/contexts/themeContext";
 import BtnText from "./btnText";
 
 function BarNav() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80">
       <nav
@@ -16,9 +21,9 @@ function BarNav() {
 
         <div className="hidden md:flex items-center gap-6">
           <BtnText href="/" texto="Home" />
-          <BtnText href="/about" texto="Sobre" />
+          <BtnText href="/store" texto="Lojinha" />
           <BtnText href="/blog" texto="Blog" />
-          <BtnText href="/gallery" texto="Galeria de Jogos" />
+          <BtnText href="/favorites" texto="Favoritos" />
           <BtnText href="/contact" texto="Contato" />
           <a
             href="https://www.instagram.com/"
@@ -28,6 +33,16 @@ function BarNav() {
           >
             Redes
           </a>
+
+          <span className="h-4 w-[1px] bg-slate-200 dark:bg-slate-800" />
+
+          <button
+            onClick={toggleTheme}
+            className="text-xs px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors bg-slate-50/50 dark:bg-slate-900/50 cursor-pointer"
+            title="Alternar Tema"
+          >
+            {theme === "dark" ? "🔘 turn on" : "⚫ turn off"}
+          </button>
         </div>
       </nav>
     </header>

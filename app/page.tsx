@@ -16,7 +16,7 @@ const FEATURED_POST = {
   authorInitials: "GZ",
   date: "12 jun 2026",
   readTime: "8 min de leitura",
-  href: "/blog/elden-ring-nightreign-review",
+  href: "/blog/elden-ring",
 };
 
 const CATEGORIES = [
